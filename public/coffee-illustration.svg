@@ -1,0 +1,32 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100" height="100">
+  <defs>
+    <style id="style">
+      svg {
+        background-color: transparent;
+      }
+    </style>
+  </defs>
+  <!-- Coffee Cup -->
+  <path d="M380,150H110c-5.5,0-10,4.5-10,10v140c0,66.2,53.8,120,120,120h60c66.2,0,120-53.8,120-120V160
+    C400,154.5,385.5,150,380,150z" fill="#D4A676" />
+  
+  <!-- Cup Highlight -->
+  <path d="M380,150H110c-5.5,0-10,4.5-10,10v20c0-5.5,4.5-10,10-10h270c5.5,0,20,4.5,20,10v-20
+    C400,154.5,385.5,150,380,150z" fill="#E6B88A" />
+  
+  <!-- Coffee -->
+  <path d="M350,170H140v90c0,49.7,40.3,90,90,90h30c49.7,0,90-40.3,90-90V170z" fill="#6D4C41" />
+  
+  <!-- Steam -->
+  <path d="M200,120c0,0-15-30,5-50s-5-40-5-40" fill="none" stroke="#BDBDBD" stroke-width="8" stroke-linecap="round" />
+  <path d="M240,120c0,0-15-25,5-45s-5-35-5-35" fill="none" stroke="#BDBDBD" stroke-width="8" stroke-linecap="round" />
+  <path d="M280,120c0,0-15-30,5-50s-5-40-5-40" fill="none" stroke="#BDBDBD" stroke-width="8" stroke-linecap="round" />
+  
+  <!-- Cup Handle -->
+  <path d="M400,200v-20c22.1,0,40,17.9,40,40v40c0,22.1-17.9,40-40,40v-20c11,0,20-9,20-20v-40
+    C420,209,411,200,400,200z" fill="#A1887F" />
+  
+  <!-- Saucer -->
+  <ellipse cx="240" cy="420" rx="150" ry="15" fill="#A1887F" />
+</svg>
