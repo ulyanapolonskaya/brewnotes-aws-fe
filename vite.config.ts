@@ -16,5 +16,5 @@ export default defineConfig({
     // For SPA client-side routing to work in development
     proxy: {},
   },
-  base: '/brewnotes-fe/',
+  base: '/',
 });
