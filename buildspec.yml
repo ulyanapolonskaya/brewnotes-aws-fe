@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm ci # Install dependencies
+  build:
+    commands:
+      - npm run build # Build the React app
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
+cache:
+  paths:
+    - node_modules/**/*
+post_build:
+  commands:
+    - aws s3 sync dist s3://brewnotes-frontend --delete # Upload files to S3
+    - aws cloudfront create-invalidation --distribution-id https://d2sbrm116lrvqy.cloudfront.net --paths "/*" # Clear CloudFront cache
