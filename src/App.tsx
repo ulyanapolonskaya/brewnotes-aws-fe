@@ -25,10 +25,10 @@ const router = createBrowserRouter(
         // },
       ],
     },
-  ],
-  {
-    basename: '/brewnotes-fe',
-  }
+  ]
+  // {
+  //   basename: '/brewnotes-fe',
+  // }
 );
 
 function App() {
