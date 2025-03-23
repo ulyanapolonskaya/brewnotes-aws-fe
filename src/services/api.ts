@@ -14,7 +14,7 @@ export interface Bean {
 
 export const fetchBeans = async (): Promise<Bean[]> => {
   try {
-    const response = await axios.get(BASE_API_URL);
+    const response = await axios.get(`${BASE_API_URL}/coffee-beans`);
     return response.data;
   } catch (error) {
     console.error('Error fetching beans:', error);
