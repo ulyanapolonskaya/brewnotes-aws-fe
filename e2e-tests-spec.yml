@@ -11,11 +11,19 @@ phases:
       - npx playwright install
       - npx playwright test --reporter=html
 
+  post_build:
+    commands:
+      - ls -la playwright-report/
+      - ls -la test-results/
+      - echo "Uploading Playwright reports to S3..."
+      - aws s3 cp playwright-report/ s3://brewnotes-playwright-reports/playwright-report/ --recursive
+
 artifacts:
   files:
     - 'playwright-report/**/*' # Include HTML report with screenshots
     - 'test-results/**/*.png' # Include failure screenshots
   discard-paths: no
+  base-directory: .
 
 cache:
   paths:
