@@ -8,6 +8,7 @@ export default defineConfig({
   use: {
     baseURL: process.env.VITE_FE_URL,
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
     headless: !!process.env.CI, // Run in headless mode in CI
   },
   testDir: './tests',
@@ -15,7 +16,7 @@ export default defineConfig({
   expect: {
     timeout: 5000,
   },
-  reporter: [['html'], ['junit']], // Add JUnit reporter for CI systems
+  reporter: [['html', { outputFolder: 'playwright-report' }]],
   outputDir: 'test-results/',
   webServer: {
     command: 'npm run dev',
