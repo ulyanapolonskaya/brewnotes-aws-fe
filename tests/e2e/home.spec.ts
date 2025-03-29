@@ -19,6 +19,6 @@ test('home page has correct content', async ({ page }) => {
 
 test('navigation buttons work correctly', async ({ page }) => {
   // Click the Browse All Beans button and check navigation
-  await page.getByText('Browse Alla Beans').click();
+  await page.getByText('Browse All Beans').click();
   await expect(page).toHaveURL(/\/beans$/);
 });
