@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "npm run build && aws s3 sync dist/ s3://brewnotes-frontend --delete",
-    "deploy:cloudfront": "npm run deploy && aws cloudfront create-invalidation --distribution-id https://d2sbrm116lrvqy.cloudfront.net --paths '/*'"
+    "deploy:cloudfront": "npm run deploy && aws cloudfront create-invalidation --distribution-id https://d2sbrm116lrvqy.cloudfront.net --paths '/*'",
+    "test:unit": "jest"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
