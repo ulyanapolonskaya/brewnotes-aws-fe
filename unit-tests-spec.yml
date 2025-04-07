@@ -1,0 +1,41 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Running unit tests...
+      - npm run test:unit -- --coverage --reporters=default --reporters=jest-junit
+
+  post_build:
+    commands:
+      - echo "Unit tests completed"
+
+reports:
+  jest-reports:
+    files:
+      - junit.xml
+    file-format: JUNITXML
+  coverage-reports:
+    files:
+      - coverage/clover.xml
+    file-format: CLOVERXML
+
+artifacts:
+  files:
+    - 'coverage/**/*'
+    - 'junit.xml'
+  discard-paths: no
+  base-directory: .
+
+cache:
+  paths:
+    - 'node_modules/**/*'
+
+environment:
+  image: node:16
+  computeType: BUILD_GENERAL1_SMALL
+  type: LINUX_CONTAINER
