@@ -11,7 +11,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     headless: !!process.env.CI, // Run in headless mode in CI
   },
-  testDir: './tests',
+  testDir: './tests/e2e',
   timeout: 30000,
   expect: {
     timeout: 5000,
