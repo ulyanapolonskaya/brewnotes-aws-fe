@@ -1,5 +1,5 @@
 // import { test, expect } from '@playwright/test';
-import { test, expect } from '../fixtures/base-page';
+import { test, expect } from './fixtures/base-page';
 
 // dotenv.config();
 
