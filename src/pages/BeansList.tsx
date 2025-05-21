@@ -1,13 +1,14 @@
 import React from 'react';
 import { useCoffeeBeans } from '../hooks/useCoffeeBeans';
 import NoDataState from '../components/NoDataState';
+import ErrorMessage from '../components/ErrorMessage';
 
 const BeansList: React.FC = () => {
   const { beans, loading, error } = useCoffeeBeans();
 
   if (loading) return <div className="p-6 text-center">Loading beans...</div>;
   if (error)
-    return <div className="p-6 text-center text-red-600">Error: {error}</div>;
+    return <ErrorMessage message={`Error: ${error}`} retryAction={() => window.location.reload()} />;
 
   return (
     <div className="max-w-7xl mx-auto p-6 w-full">
