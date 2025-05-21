@@ -3,11 +3,15 @@ import { useCoffeeBeans } from '../hooks/useCoffeeBeans';
 import NoDataState from '../components/NoDataState';
 import ErrorMessage from '../components/ErrorMessage';
 import AddBeanModal from '../components/AddBeanModal';
+import DeleteBeanModal from '../components/DeleteBeanModal';
 import { Button } from '../components/ui/button';
+import { X } from 'lucide-react';
 
 const BeansList: React.FC = () => {
-  const { beans, loading, error, refreshBeans } = useCoffeeBeans();
+  const { beans, loading, error, deleteBean, refreshBeans } = useCoffeeBeans();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [beanToDelete, setBeanToDelete] = useState<{id: string, name: string} | null>(null);
 
   if (loading) return <div className="p-6 text-center">Loading beans...</div>;
   if (error)
@@ -39,8 +43,20 @@ const BeansList: React.FC = () => {
                 <h2 className="text-xl font-semibold text-white">
                   {bean.name}
                 </h2>
-                <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-semibold">
-                  Rating: {bean.rating || 'N/A'}
+                <div className="flex items-center space-x-3">
+                  <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-semibold">
+                    Rating: {bean.rating || 'N/A'}
+                  </div>
+                  <button 
+                    onClick={() => {
+                      setBeanToDelete({ id: bean.id, name: bean.name });
+                      setIsDeleteModalOpen(true);
+                    }}
+                    className="text-white hover:text-amber-200 transition-colors p-1 rounded-full hover:bg-brown-800"
+                    aria-label="Delete bean"
+                  >
+                    <X size={18} />
+                  </button>
                 </div>
               </div>
               <div className="p-5">
@@ -59,6 +75,18 @@ const BeansList: React.FC = () => {
         onClose={() => setIsAddModalOpen(false)}
         onBeanAdded={refreshBeans}
       />
+      
+      {beanToDelete && (
+        <DeleteBeanModal
+          isOpen={isDeleteModalOpen}
+          onClose={() => {
+            setIsDeleteModalOpen(false);
+            setBeanToDelete(null);
+          }}
+          onConfirm={async () => await deleteBean(beanToDelete.id)}
+          beanName={beanToDelete.name}
+        />
+      )}
     </div>
   );
 };

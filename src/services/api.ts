@@ -37,3 +37,12 @@ export const addBean = async (bean: NewBean): Promise<Bean> => {
     throw error;
   }
 };
+
+export const deleteBean = async (id: string): Promise<void> => {
+  try {
+    await axios.delete(`${BASE_API_URL}/coffee-beans/${id}`);
+  } catch (error) {
+    console.error('Error deleting bean:', error);
+    throw error;
+  }
+};
