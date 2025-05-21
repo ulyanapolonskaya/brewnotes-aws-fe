@@ -54,15 +54,16 @@ const AddBeanModal: React.FC<AddBeanModalProps> = ({ isOpen, onClose, onBeanAdde
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Add New Coffee Bean">
-      {error && (
-        <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
-          {error}
-        </div>
-      )}
-      
-      <form onSubmit={handleSubmit}>
+      <div className="p-6">
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
+            {error}
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="name" className="block text-sm font-medium text-amber-800 mb-1">
             Bean Name *
           </label>
           <input
@@ -70,21 +71,21 @@ const AddBeanModal: React.FC<AddBeanModalProps> = ({ isOpen, onClose, onBeanAdde
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-full px-3 py-2 border border-amber-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-amber-50"
             placeholder="e.g. Ethiopian Yirgacheffe"
             disabled={isSubmitting}
           />
         </div>
         
         <div className="mb-4">
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="description" className="block text-sm font-medium text-amber-800 mb-1">
             Description
           </label>
           <textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-full px-3 py-2 border border-amber-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-amber-50"
             placeholder="Describe the flavor profile, origin, etc."
             rows={3}
             disabled={isSubmitting}
@@ -92,7 +93,7 @@ const AddBeanModal: React.FC<AddBeanModalProps> = ({ isOpen, onClose, onBeanAdde
         </div>
         
         <div className="mb-6">
-          <label htmlFor="rating" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="rating" className="block text-sm font-medium text-amber-800 mb-1">
             Rating (1-5)
           </label>
           <input
@@ -108,7 +109,7 @@ const AddBeanModal: React.FC<AddBeanModalProps> = ({ isOpen, onClose, onBeanAdde
             min="1"
             max="5"
             step="0.1"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-full px-3 py-2 border border-amber-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 bg-amber-50"
             placeholder="Rate from 1 to 5"
             disabled={isSubmitting}
           />
@@ -120,17 +121,21 @@ const AddBeanModal: React.FC<AddBeanModalProps> = ({ isOpen, onClose, onBeanAdde
             variant="outline" 
             onClick={onClose}
             disabled={isSubmitting}
+            className="border-amber-600 text-amber-700 hover:bg-amber-50"
           >
             Cancel
           </Button>
           <Button 
             type="submit"
             disabled={isSubmitting}
+            className="bg-gradient-to-r from-amber-600 to-brown-700 hover:from-amber-700 hover:to-brown-800"
           >
             {isSubmitting ? 'Adding...' : 'Add Bean'}
           </Button>
         </div>
       </form>
+    </div>
+
     </Modal>
   );
 };
