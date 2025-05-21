@@ -5,6 +5,11 @@ export const useCoffeeBeans = () => {
   const [beans, setBeans] = useState<Bean[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [refreshCounter, setRefreshCounter] = useState(0);
+
+  const refreshBeans = () => {
+    setRefreshCounter(prev => prev + 1);
+  };
 
   useEffect(() => {
     const getBeans = async () => {
@@ -22,7 +27,7 @@ export const useCoffeeBeans = () => {
     };
 
     getBeans();
-  }, []);
+  }, [refreshCounter]);
 
-  return { beans, loading, error };
+  return { beans, loading, error, refreshBeans };
 };

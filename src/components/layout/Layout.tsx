@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import AddBeanModal from '../AddBeanModal';
 
 function Layout() {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
     <>
       <header className="bg-gray-800 text-white p-4">
@@ -18,9 +21,12 @@ function Layout() {
                 </Link>
               </li>
               <li>
-                <Link to="/beans/new" className="hover:underline">
+                <button 
+                  onClick={() => setIsAddModalOpen(true)} 
+                  className="hover:underline text-white bg-transparent border-none cursor-pointer"
+                >
                   Add Bean
-                </Link>
+                </button>
               </li>
             </ul>
           </nav>
@@ -34,6 +40,12 @@ function Layout() {
           <p>Brew Notes - Track your coffee journey</p>
         </div>
       </footer>
+
+      <AddBeanModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onBeanAdded={() => {}}
+      />
     </>
   );
 }

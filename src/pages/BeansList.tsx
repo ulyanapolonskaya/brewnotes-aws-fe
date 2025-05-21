@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCoffeeBeans } from '../hooks/useCoffeeBeans';
 import NoDataState from '../components/NoDataState';
 import ErrorMessage from '../components/ErrorMessage';
+import AddBeanModal from '../components/AddBeanModal';
+import { Button } from '../components/ui/button';
 
 const BeansList: React.FC = () => {
-  const { beans, loading, error } = useCoffeeBeans();
+  const { beans, loading, error, refreshBeans } = useCoffeeBeans();
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   if (loading) return <div className="p-6 text-center">Loading beans...</div>;
   if (error)
@@ -12,15 +15,18 @@ const BeansList: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 w-full">
-      <h2 className="text-3xl font-bold text-brown-800 mb-6">Coffee Beans</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-brown-800">Coffee Beans</h2>
+        <Button onClick={() => setIsAddModalOpen(true)}>
+          Add Bean
+        </Button>
+      </div>
 
       {beans.length === 0 ? (
         <NoDataState
           message="No beans found. Start by adding your first coffee bean!"
           buttonText="Add New Bean"
-          onAction={() => {
-            /* Add navigation to add new bean page */
-          }}
+          onAction={() => setIsAddModalOpen(true)}
         />
       ) : (
         <div className="space-y-6">
@@ -47,6 +53,12 @@ const BeansList: React.FC = () => {
           ))}
         </div>
       )}
+      
+      <AddBeanModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onBeanAdded={refreshBeans}
+      />
     </div>
   );
 };
