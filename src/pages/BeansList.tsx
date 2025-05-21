@@ -5,7 +5,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import AddBeanModal from '../components/AddBeanModal';
 import DeleteBeanModal from '../components/DeleteBeanModal';
 import { Button } from '../components/ui/button';
-import { X } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
 const BeansList: React.FC = () => {
   const { beans, loading, error, deleteBean, refreshBeans } = useCoffeeBeans();
@@ -52,10 +52,11 @@ const BeansList: React.FC = () => {
                       setBeanToDelete({ id: bean.id, name: bean.name });
                       setIsDeleteModalOpen(true);
                     }}
-                    className="text-white hover:text-amber-200 transition-colors p-1 rounded-full hover:bg-brown-800"
+                    className="text-white hover:text-amber-200 transition-colors"
+                    style={{ background: 'none', border: 'none' }}
                     aria-label="Delete bean"
                   >
-                    <X size={18} />
+                    <Trash2 size={18} />
                   </button>
                 </div>
               </div>
