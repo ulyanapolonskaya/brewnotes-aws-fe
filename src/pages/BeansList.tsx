@@ -10,7 +10,7 @@ const BeansList: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 w-full">
-      <h1 className="text-3xl font-bold text-brown-800 mb-6">Coffee Beans</h1>
+      <h2 className="text-3xl font-bold text-brown-800 mb-6">Coffee Beans</h2>
 
       {beans.length === 0 ? (
         <div className="bg-amber-50 p-6 rounded-lg border border-amber-200 text-center">
