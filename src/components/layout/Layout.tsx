@@ -27,7 +27,7 @@ function Layout() {
       </main>
       <footer className="bg-gray-800 text-white p-4 mt-8">
         <div className="container mx-auto text-center">
-          <p>BrewNotes - Track your coffee journey</p>
+          <p>Brew Notes - Track your coffee journey</p>
         </div>
       </footer>
     </>

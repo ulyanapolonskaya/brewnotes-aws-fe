@@ -9,8 +9,8 @@ baseTest('home page has correct content', async ({ page }) => {
   await baseExpect(subtitle).toHaveText('Your personal coffee bean collection');
 
   // Verify the hero section heading
-  const heroHeading = await page.locator('h2');
-  await baseExpect(heroHeading).toHaveText('Your Coffee Journey');
+  const heroHeading = await page.locator('h2:has-text("Your Coffee Journey")');
+  await baseExpect(heroHeading).toBeVisible();
 
   // Check that buttons are present
   await baseExpect(page.getByText('Browse All Beans')).toBeVisible();
@@ -40,7 +40,7 @@ test.describe('BrewNotes Homepage', () => {
     await expect(page).toHaveURL('/beans/new');
   });
 
-  test.only('should navigate to Browse All Beans page when button is clicked', async ({
+  test('should navigate to Browse All Beans page when button is clicked', async ({
     page,
   }) => {
     await page.goto('/');
@@ -58,12 +58,12 @@ test.describe('BrewNotes Homepage', () => {
 
   test('should display main content correctly', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('h1')).toHaveText('BrewNotes');
+    await expect(page.locator('h1')).toHaveText('Brew Notes');
     await expect(
       page.locator('text=Your personal coffee bean collection')
     ).toBeVisible();
     await expect(page.locator('footer')).toHaveText(
-      'BrewNotes - Track your coffee journey'
+      'Brew Notes - Track your coffee journey'
     );
   });
 });

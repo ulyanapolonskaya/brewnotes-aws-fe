@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCoffeeBeans } from '../hooks/useCoffeeBeans';
+import NoDataState from '../components/NoDataState';
 
 const BeansList: React.FC = () => {
   const { beans, loading, error } = useCoffeeBeans();
@@ -13,19 +14,13 @@ const BeansList: React.FC = () => {
       <h2 className="text-3xl font-bold text-brown-800 mb-6">Coffee Beans</h2>
 
       {beans.length === 0 ? (
-        <div className="bg-amber-50 p-6 rounded-lg border border-amber-200 text-center">
-          <p className="text-brown-600">
-            No beans found. Start by adding your first coffee bean!
-          </p>
-          <button
-            className="mt-4 bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700"
-            onClick={() => {
-              /* Add navigation to add new bean page */
-            }}
-          >
-            Add New Bean
-          </button>
-        </div>
+        <NoDataState
+          message="No beans found. Start by adding your first coffee bean!"
+          buttonText="Add New Bean"
+          onAction={() => {
+            /* Add navigation to add new bean page */
+          }}
+        />
       ) : (
         <div className="space-y-6">
           {beans.map((bean) => (
