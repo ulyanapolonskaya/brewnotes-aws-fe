@@ -5,7 +5,11 @@ function Layout() {
     <>
       <header className="bg-gray-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h2 className="text-2xl font-bold">Brew Notes</h2>
+          <h2 className="text-2xl font-bold">
+            <Link to="/" className="hover:underline">
+              Brew Notes
+            </Link>
+          </h2>
           <nav>
             <ul className="flex space-x-4">
               <li>
