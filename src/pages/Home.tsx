@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { CoffeeIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import src from '/coffee-illustration.svg';
+import AddBeanModal from '../components/AddBeanModal';
 
 const Home = () => {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
     <div className="bg-amber-50 min-h-screen">
       <div className="container mx-auto p-6">
@@ -27,11 +30,12 @@ const Home = () => {
                     <CoffeeIcon className="mr-2 h-4 w-4" /> Browse All Beans
                   </Button>
                 </Link>
-                <Link to="/beans/new">
-                  <Button className="bg-white text-brown-800 hover:bg-amber-100">
-                    Add New Bean
-                  </Button>
-                </Link>
+                <Button 
+                  className="bg-white text-brown-800 hover:bg-amber-100"
+                  onClick={() => setIsAddModalOpen(true)}
+                >
+                  Add New Bean
+                </Button>
               </div>
             </div>
             <div className="hidden md:block">
@@ -47,6 +51,12 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      <AddBeanModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onBeanAdded={() => {}}
+      />
     </div>
   );
 };
