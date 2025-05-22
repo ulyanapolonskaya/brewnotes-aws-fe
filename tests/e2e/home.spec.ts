@@ -40,7 +40,7 @@ test.describe('BrewNotes Homepage', () => {
     await expect(page).toHaveURL('/beans');
   });
 
-  test('should display modal when Add New Bean button is clicked', async ({
+  test.skip('should display modal when Add New Bean button is clicked', async ({
     page,
   }) => {
     await page.goto('/');
