@@ -32,14 +32,6 @@ test.describe('BrewNotes Homepage', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('should navigate to Add Bean page when Add Bean link is clicked', async ({
-    page,
-  }) => {
-    await page.goto('/');
-    await page.click('text=Add Bean');
-    await expect(page).toHaveURL('/beans/new');
-  });
-
   test('should navigate to Browse All Beans page when button is clicked', async ({
     page,
   }) => {
@@ -48,12 +40,14 @@ test.describe('BrewNotes Homepage', () => {
     await expect(page).toHaveURL('/beans');
   });
 
-  test('should navigate to Add New Bean page when button is clicked', async ({
+  test('should display modal when Add New Bean button is clicked', async ({
     page,
   }) => {
     await page.goto('/');
     await page.click('text=Add New Bean');
-    await expect(page).toHaveURL('/beans/new');
+    
+    // Check that the modal is displayed
+    await expect(page.locator('//div[@role="dialog"]//div[@data-headlessui-state="open"]')).toBeVisible();
   });
 
   test('should display main content correctly', async ({ page }) => {
