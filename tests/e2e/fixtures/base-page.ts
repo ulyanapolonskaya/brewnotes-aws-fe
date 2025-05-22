@@ -4,7 +4,7 @@ import { test as base } from '@playwright/test';
 export const test = base.extend({
   page: async ({ page, baseURL }, use) => {
     // Navigate to base URL before each test
-    await page.goto(baseURL || 'hhttp://localhost:3000');
+    await page.goto(baseURL || 'http://localhost:3000');
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await use(page);
   },
