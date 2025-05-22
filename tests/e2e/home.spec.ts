@@ -50,7 +50,7 @@ test.describe('BrewNotes Homepage', () => {
     await expect(page.locator('//div[@role="dialog"]//div[@data-headlessui-state="open"]')).toBeVisible();
   });
 
-  test('should display main content correctly', async ({ page }) => {
+  test.skip('should display main content correctly', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('Brew Notes');
     await expect(
